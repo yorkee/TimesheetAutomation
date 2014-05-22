@@ -79,7 +79,7 @@ public class TimeSheet  {
 			elemDay.sendKeys("8");
 			return true;
 		} catch (InvalidElementStateException e){    	   
-			System.out.println("Day "+ days[day] +" not available yet.  Too bad we can't fill time in advance...");
+			System.out.println(days[day] +" is not available yet.  Too bad we can't fill time in advance...");
 			return false;
 		}
 	}
