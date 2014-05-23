@@ -1,4 +1,6 @@
 package TimeSheetAutomation;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.NoSuchElementException;
@@ -70,8 +72,26 @@ public class TimeSheet  {
 	}
 	
 	public void submitTimesheet(){
+
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		WebElement elemSubmitButton = driver.findElement(By.id("submitTimesheetButton"));
 		elemSubmitButton.click();
+		
+		WebElement elemDialogDiv = driver.findElement(By.className("ui-dialog-buttonset"));
+		List<WebElement> elemDialogButtons = elemDialogDiv.findElements(By.className("ui-button"));
+		elemDialogButtons.get(1).click();
+	}
+	
+	public boolean checkIf40Hrs(){
+											
+		WebElement elemTotal = driver.findElement(By.id("Assignment_0_AssignmentDetail_0_TimesheetRowGroup_0_Task_0_RowTotal"));
+		System.out.println("what is the hours?  "+ elemTotal.getText().toString());
+		return "40".equals(elemTotal.getText().toString());
 	}
 	
 	public boolean fillTimeForTheDay(WebElement elemDay, int day){
