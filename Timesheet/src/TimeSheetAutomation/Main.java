@@ -7,15 +7,17 @@ public class Main {
 	
 	public static void main(String[] args) {
 
-		if (args.length != 3){
-			System.out.println("Please enter username, password and workorder as 3 arguments");
+		if (args.length != 2){
+			System.out.println("Please enter username, password and workorder(optional) as arguments");
 			System.exit(1);
 		}
     	System.setProperty("webdriver.chrome.driver", "./chromedriver");
     	
-    	User user = new User(args[0], args[1], args[2]);
-    	//EYeu13310 Mobilespace1 workorder
-//    	User user = new User("EYeu13310", "Mobilespace1", "workorder");    	
+    	String workOrderString = "";
+    	if (args[2]!=null) {
+    		workOrderString = args[2];
+    	}
+    	User user = new User(args[0], args[1], workOrderString);
 //    	User user = new User("yourUserName", "yourPassword", "yourWorkOrder");
         WebDriver driver = new ChromeDriver();
         TimeSheet timeSheet = new TimeSheet(driver, user);
@@ -35,7 +37,7 @@ public class Main {
         	boolean isFillTimesheetSuccess = timeSheet.fillTimeSheet(); 
         
         	//disable this line to see the browser completed
-        	//driver.quit();    		
+        	driver.quit();    		
 
         	if (!timeSheet.checkIf40Hrs()){
         		System.out.println("Not filling up 40 hours");
