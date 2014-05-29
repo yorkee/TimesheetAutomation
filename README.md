@@ -8,7 +8,9 @@ This has been tested on a Mac only!  For Windows user, you can use the code, but
 Steps:
 - make sure you have chrome installed
 - make sure you can compile/run java
+- download selenium-java-2.41.0.zip from http://selenium-release.storage.googleapis.com/index.html?path=2.41/
 - open project using eclipse
+- unzip selenium-java-2.41.0.zip into timesheet folder, which would replace the empty selenium-2.41.0 folder in the project
 - change username in Main.java
 - build, and run Main.java as a java application
 - watch the browser do its job, watch for both the browser and the system log on eclipse.
