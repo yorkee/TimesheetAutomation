@@ -90,12 +90,14 @@ public class TimeSheet  {
 		elemDialogButtons.get(1).click();
 		
 		boolean isSubmitted = false;
-		while (!isSubmitted){
+		int attempt = 0;
+		while (!isSubmitted || attempt >20){
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			attempt++;
 			try {
 				WebElement elemStatus = driver.findElement(By.id("messageCenterStatusSpan"));
 				if (elemStatus.getText().startsWith("Submitted by")){
