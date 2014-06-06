@@ -2,11 +2,14 @@ package TimeSheetAutomation;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 
 public class TimeSheet  {
 
@@ -85,6 +88,25 @@ public class TimeSheet  {
 		WebElement elemDialogDiv = driver.findElement(By.className("ui-dialog-buttonset"));
 		List<WebElement> elemDialogButtons = elemDialogDiv.findElements(By.className("ui-button"));
 		elemDialogButtons.get(1).click();
+		
+		boolean isSubmitted = false;
+		while (!isSubmitted){
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			try {
+				WebElement elemStatus = driver.findElement(By.id("messageCenterStatusSpan"));
+				if (elemStatus.getText().startsWith("Submitted by")){
+					isSubmitted = true;
+				}
+			} catch (ElementNotVisibleException e){
+				//do nothing
+			} catch (ElementNotFoundException e) {
+				//do nothing
+			}
+		}
 	}
 	
 	public boolean checkIf40Hrs(){
