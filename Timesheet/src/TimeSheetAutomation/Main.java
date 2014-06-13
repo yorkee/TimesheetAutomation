@@ -41,13 +41,23 @@ public class Main {
         		timeSheet.submitTimesheet();
         		System.out.println("TimeSheet Completed");
         		
-            	driver.quit();    		
+            	driver.quit(); 
+        		try {
+        			Thread.sleep(1000);
+        		} catch (InterruptedException e) {
+        			e.printStackTrace();
+        		}            	
         		System.exit(0);
         	} else {
         		System.out.println("TimeSheet Not Completed");
         	}
         }
-    	driver.quit();    		
+    	driver.quit();   
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}    	
 		System.exit(1);
 
 

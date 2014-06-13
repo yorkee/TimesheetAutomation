@@ -60,9 +60,11 @@ public class TimeSheet  {
         elemWorkOrder.sendKeys(user.getWorkOrder());
 		
         WebElement elemPayCode = driver.findElement(By.id("Assignment_0_AssignmentDetail_0_TimesheetRowGroup_0_Task_0_PayCodeComboSelector_Input"));
+        elemPayCode.clear();
         elemPayCode.sendKeys("Straight Time");
         
         WebElement elemShift = driver.findElement(By.id("Assignment_0_AssignmentDetail_0_TimesheetRowGroup_0_Task_0_ShiftComboSelector_Input"));
+        elemShift.clear();
        elemShift.sendKeys("1st");
        
        for (int i = 0; i < 5; i++){
