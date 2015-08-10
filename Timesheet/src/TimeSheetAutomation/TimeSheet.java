@@ -29,13 +29,16 @@ public class TimeSheet  {
 	public void login(){
         driver.get("https://prod2.beeline.com/allegisgm?7c50eeec67f8435289f4d67b6423e053");
 
-        WebElement elemUsername = driver.findElement(By.id("beelineForm_userNameText"));
+        //WebElement elemUsername = driver.findElement(By.id("beelineForm_userNameText"));
+        WebElement elemUsername = driver.findElement(By.id("beelineForm_UserLoginForm_userNameText"));
         elemUsername.sendKeys(user.getUsername());
 
-        WebElement elemPassword = driver.findElement(By.id("beelineForm_passwordText"));
+        //WebElement elemPassword = driver.findElement(By.id("beelineForm_passwordText"));
+        WebElement elemPassword = driver.findElement(By.id("beelineForm_UserLoginForm_passwordText"));
         elemPassword.sendKeys(user.getPassword());
         
-        WebElement elemLogin = driver.findElement(By.id("defaultActionLinks_loginAction"));
+        //WebElement elemLogin = driver.findElement(By.id("defaultActionLinks_loginAction"));
+        WebElement elemLogin = driver.findElement(By.id("loginButton"));
         elemLogin.click();	
 	}
 	
